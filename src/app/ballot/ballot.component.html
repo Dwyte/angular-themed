@@ -1,0 +1,18 @@
+<div style="width: 80%; margin: auto;">
+	
+	<mat-card style="background-color: black;  margin-top: 10%;">
+		<div style="width: 80%; margin: auto; background-color:black; color: white; ">
+			<form (submit)="onSubmitBallot()" >
+				<!-- PRESIDENT -->
+				<mat-radio-group [(ngModel)]="candidateModel.president" name="president" #radioGroup="matRadioGroup">
+				  <mat-radio-button value="option 1">option 1</mat-radio-button>
+				  <mat-radio-button value="option 2">option 2</mat-radio-button>
+				</mat-radio-group>
+				
+
+
+                <button style="display: block; width: 100%; background-color: green; color:white;"type="submit" mat-flat-button  >Submit</button>
+			</form>	
+		</div>
+	</mat-card>
+</div> 
