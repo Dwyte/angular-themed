@@ -4,6 +4,7 @@ import {BallotfetchService} from '../ballotfetch.service';
 import {Router} from '@angular/router';
 
 
+
 @Component({
   selector: 'app-ballot',
   templateUrl: './ballot.component.html',
@@ -14,18 +15,18 @@ export class BallotComponent implements OnInit {
 
   candidateModel = new Candidates('','','');
 
-  constructor(_ballotfetch: BallotfetchService, router: Router){}
+  constructor(private _ballotfetch: BallotfetchService, private router: Router, private http: Http){}
 
   ngOnInit() {
   }
 
   onSubmitBallot(){
-  	_ballotfetch.sendData(candidateModel).subscribe(data => {
+  	this._ballotfetch.sendData(this.candidateModel).subscribe(data => {
 		if (data.success) {
-				this.flashMessage.show('You are now registered !', {cssClass: 'alert-success', timeout: 3000});
+				//this.flashMessage.show('You are now registered !', {cssClass: 'alert-success', timeout: 3000});
 				this.router.navigate(['/login']);
 			} else {
-				this.flashMessage.show('An eror Occured!', {cssClass: 'alert-danger', timeout: 3000});
+				//this.flashMessage.show('An eror Occured!', {cssClass: 'alert-danger', timeout: 3000});
 				this.router.navigate(['/register']);
 			} 
 		});	

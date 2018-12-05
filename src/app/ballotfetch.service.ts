@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class BallotfetchService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   fetchData(data){
   	let headers = new Headers();
