@@ -13,15 +13,21 @@ import {Router} from '@angular/router';
 
 export class BallotComponent implements OnInit {
   errorMsg: any;
+  data:any;
 
-  candidateModel = new Candidates('','','');
+  candidateModel = new Candidates('null','','','');
 
   constructor(private _ballotfetch: BallotfetchService, private router: Router){}
 
   ngOnInit() {
-  	this._ballotfetch.fetchData().subscribe(
-  		response => console.log('Success!', response),
-        error => this.errorMsg = error.statusText)
+  	
+  }
+
+  fetchData(){
+	this._ballotfetch.fetchData().subscribe(
+	//response => console.log('Success!', response),
+	response => this.data = response,
+	error => this.errorMsg = error.statusText)
   }
 
   onSubmitBallot(){
@@ -34,8 +40,8 @@ export class BallotComponent implements OnInit {
 		// 		this.router.navigate(['/register']);
 		// 	} 
 		// });	
-		
-
 	}		
-	//console.log(this.candidateModel);}
+
+
+	
 }
