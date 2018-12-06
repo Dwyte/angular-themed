@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { tokenNotExpired } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,11 @@ export class AuthService {
   authToken : any;
   user: any;
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, public jwtHelper: JwtHelperService  ) { }
+
+  exportToken(){
+    return this.authToken;
+  }
 
   //this must be only one time to create admin account
   register(data: IAuth){
@@ -38,13 +42,17 @@ export class AuthService {
     this.user = user;
   }
 
+  returnToken(){
+    return localStorage.getItem('id_token');
+  }
+
   loadToken(){
     const token = localStorage.getItem('id_token');  
     this.authToken = token;
   }
 
   LoggedIn(){
-    return tokenNotExpired('id_token');
+    return this.jwtHelper.isTokenExpired('id_token');
   }
 
   Logout(){

@@ -41,7 +41,7 @@ import {BallotfetchService} from './ballotfetch.service';
 import { EditpollComponent } from './dashboardComponents/editpoll/editpoll.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
-
+import {AuthService} from './auth.service';
 const appRoute: Routes = [
   {path:'navbar', component:NavbarComponent},
   {path:'', component:HomeComponent},
@@ -106,7 +106,7 @@ const appRoute: Routes = [
      MatSelectModule
    
   ],
-  providers: [BallotfetchService], 
+  providers: [BallotfetchService,AuthService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
