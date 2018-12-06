@@ -38,6 +38,9 @@ import { ActivateComponent } from './dashboardComponents/activate/activate.compo
 import { BallotComponent } from './ballot/ballot.component';
 import { NominateComponent } from './dashboardComponents/nominate/nominate.component';
 import {BallotfetchService} from './ballotfetch.service';
+import { EditpollComponent } from './dashboardComponents/editpoll/editpoll.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
 
 const appRoute: Routes = [
   {path:'navbar', component:NavbarComponent},
@@ -50,6 +53,7 @@ const appRoute: Routes = [
       { path: 'tallyboard', component:TallyboardComponent},
       {path: 'upload', component: UploadDatabaseComponent},
       {path: 'activate', component: ActivateComponent},
+      {path:'editpoll', component: EditpollComponent}
     ]
   },
   {path:'ballot', component:BallotComponent},
@@ -72,7 +76,8 @@ const appRoute: Routes = [
     UploadDatabaseComponent,
     ActivateComponent,
     BallotComponent,
-    NominateComponent
+    NominateComponent,
+    EditpollComponent
 
   ],
   imports: [
@@ -96,7 +101,9 @@ const appRoute: Routes = [
     MatTableModule,
     NgxChartsModule,
      MatRadioModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+     HttpClientModule,
+     MatSelectModule
    
   ],
   providers: [BallotfetchService], 

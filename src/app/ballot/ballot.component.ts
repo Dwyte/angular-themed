@@ -12,23 +12,30 @@ import {Router} from '@angular/router';
 })
 
 export class BallotComponent implements OnInit {
+  errorMsg: any;
 
   candidateModel = new Candidates('','','');
 
-  constructor(private _ballotfetch: BallotfetchService, private router: Router, private http: Http){}
+  constructor(private _ballotfetch: BallotfetchService, private router: Router){}
 
   ngOnInit() {
+  	this._ballotfetch.fetchData().subscribe(
+  		response => console.log('Success!', response),
+        error => this.errorMsg = error.statusText)
   }
 
   onSubmitBallot(){
-  	this._ballotfetch.sendData(this.candidateModel).subscribe(data => {
-		if (data.success) {
-				//this.flashMessage.show('You are now registered !', {cssClass: 'alert-success', timeout: 3000});
-				this.router.navigate(['/login']);
-			} else {
-				//this.flashMessage.show('An eror Occured!', {cssClass: 'alert-danger', timeout: 3000});
-				this.router.navigate(['/register']);
-			} 
-		});	
+  	this._ballotfetch.sendData(this.candidateModel).subscribe(data => {});
+		// if (data.success) {
+		// 		//this.flashMessage.show('You are now registered !', {cssClass: 'alert-success', timeout: 3000});
+		// 		this.router.navigate(['/login']);
+		// 	} else {
+		// 		//this.flashMessage.show('An eror Occured!', {cssClass: 'alert-danger', timeout: 3000});
+		// 		this.router.navigate(['/register']);
+		// 	} 
+		// });	
+		
+
 	}		
+	//console.log(this.candidateModel);}
 }
