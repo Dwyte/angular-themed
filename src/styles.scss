@@ -72,3 +72,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
     color:white;
 }
 
+table {
+  width:100%;
+}
+
+td, th {
+  border-bottom: 2px solid #333;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+tr:nth-child(even){
+  background-color: black;
+  color: white
+}
+
+tr:nth-child(odd){
+  background-color: #222;
+  color: white;
+}
+
+th{
+  padding-top: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: green;
+  color: white;
+}

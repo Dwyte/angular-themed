@@ -1,41 +1,33 @@
-<mat-grid-list cols="2" rowheight="3:2" gutterSize="10px">
-        <mat-grid-tile >
-            <div class="mat-elevation-z8">
-              <table mat-table [dataSource]="dataSource" style="width: 100%; height: 100%;">
+<mat-grid-list cols="2" rowheight="3:2" gutterSize="10px">     
+  <main [class]="theme">
+    <mat-grid-tile >
 
-                  <!-- Position Column -->
-                  <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                  </ng-container>
+       <ngx-charts-pie-grid
+          [view]="pieview1"
+          [scheme]="colorScheme1"
+          [results]="votedList1"
+          [label]="showLabels1"
+          [customColors]="customColors1"
+          [designatedTotal]="totalVoters1"
+          (select)="onSelect($event)" 
+          style="color: white;">
+        </ngx-charts-pie-grid>
+    </mat-grid-tile>
+  </main>
 
-                  <!-- Name Column -->
-                  <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                  </ng-container>
+  <main [class]="theme">
+          <mat-grid-tile >
 
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-          </div>
-        </mat-grid-tile>
-
-<main [class]="theme">
-        <mat-grid-tile >
-
-           <ngx-charts-pie-grid
-            [view]="pieview"
-            [scheme]="colorScheme"
-            [results]="votedList"
-            [label]="showLabels"
-            [customColors]="customColors"
-            [designatedTotal]="totalVoters"
-            (select)="onSelect($event)" 
-            style="color: white;">
-          </ngx-charts-pie-grid>
-        </mat-grid-tile>
-</main>
-        
-        </mat-grid-list>
+             <ngx-charts-pie-grid
+              [view]="pieview"
+              [scheme]="colorScheme"
+              [results]="votedList"
+              [label]="showLabels"
+              [customColors]="customColors"
+              [designatedTotal]="totalVoters"
+              (select)="onSelect($event)" 
+              style="color: white;">
+            </ngx-charts-pie-grid>
+          </mat-grid-tile>
+  </main>
+</mat-grid-list>

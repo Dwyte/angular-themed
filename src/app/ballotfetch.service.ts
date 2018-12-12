@@ -7,6 +7,7 @@ import { catchError} from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import {Candidates} from './ballot/candidates';
 import {AuthService} from './auth.service';
+import {BallotFormat} from './ballot/ballot';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class BallotfetchService {
   updateData (data: Candidates ){
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Typehttps://m.facebook.com/':  'application/json',
         'Authorization': this.token
       })
     };
@@ -35,23 +36,28 @@ export class BallotfetchService {
   }
 
   sendData (data: Candidates) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': this.token
-      })
-    };
-    return this.http.post<Candidates>('this._url', data, httpOptions).pipe(catchError(this.errorHandler));
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type':  'application/json',
+    //     'Authorization': this.token
+    //   })
+    // };
+    return this.http.post<Candidates>('this._url', data);
   }
 
-  fetchData(): Observable<Candidates[]>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': this.token
-      })
-    };
-  	return this.http.get<Candidates[]>('https://jsonplaceholder.typicode.com/users',httpOptions);
+  fetch() : Observable<any[]> {
+    return this.http.get<any[]>('assets/test.json');
   }
+
+  // fetchData(): Observable<any[]>{
+  //  //  const httpOptions = {
+  //  //    headers: new HttpHeaders({
+  //  //      'Authorization': this.token
+  //  //    })
+  //  //  };
+  // 	// return this.http.get<BallotFormat[]>('https://jsonplaceholder.typicode.com/users',httpOptions);
+  //       return this.http.get<any[]>('assets/test.json');
+  // }
 
   errorHandler(error: HttpErrorResponse) {
     return throwError(error);

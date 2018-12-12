@@ -19,7 +19,9 @@ import { MatToolbarModule,
          MatInputModule,
          MatPaginatorModule,
          MatRadioModule,
-         MatTableModule, } from '@angular/material';
+         MatTableModule,
+         MatDatepickerModule,
+         MatNativeDateModule } from '@angular/material';
 
 
 import { RegisterComponent } from './register/register.component';
@@ -42,6 +44,10 @@ import { EditpollComponent } from './dashboardComponents/editpoll/editpoll.compo
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import {AuthService} from './auth.service';
+import {NominateService} from './nominate.service';
+import {HomeService} from './home.service';
+import { UpdateNomineeComponent } from './dashboardComponents/update-nominee/update-nominee.component';
+
 const appRoute: Routes = [
   {path:'navbar', component:NavbarComponent},
   {path:'', component:HomeComponent},
@@ -53,7 +59,9 @@ const appRoute: Routes = [
       { path: 'tallyboard', component:TallyboardComponent},
       {path: 'upload', component: UploadDatabaseComponent},
       {path: 'activate', component: ActivateComponent},
-      {path:'editpoll', component: EditpollComponent}
+      {path:'editpoll', component: EditpollComponent},
+      {path:'nominate', component: NominateComponent},
+      {path:'update-nominee', component: UpdateNomineeComponent}
     ]
   },
   {path:'ballot', component:BallotComponent},
@@ -77,7 +85,8 @@ const appRoute: Routes = [
     ActivateComponent,
     BallotComponent,
     NominateComponent,
-    EditpollComponent
+    EditpollComponent,
+    UpdateNomineeComponent
 
   ],
   imports: [
@@ -103,10 +112,13 @@ const appRoute: Routes = [
      MatRadioModule,
     AngularFileUploaderModule,
      HttpClientModule,
-     MatSelectModule
+     MatSelectModule,
+     MatDatepickerModule,
+     MatNativeDateModule
+     // JwtModule
    
   ],
-  providers: [BallotfetchService,AuthService], 
+  providers: [BallotfetchService,AuthService,NominateService, HomeService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import {AuthService} from '../../auth.service';
-import {Candidates} from '../../ballot/candidates';
+import {NominateService} from '../../nominate.service';
+import {Nominee} from './nominee';
 
 
 @Component({
@@ -11,37 +10,27 @@ import {Candidates} from '../../ballot/candidates';
 })
 export class NominateComponent implements OnInit {
 
-  constructor(private http:HttpClient, private authService: AuthService) { }
+  constructor(private nominate: NominateService) { }
 
   ngOnInit() {
   }
 
-  addNominee(data:Candidates ){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': this.authService.authToken
-      })
-    };
-    return this.http.post('url',data,httpOptions).pipe();
-  }
+  pname1: String; plrn1: String; pparty1: String;
+  vpname1: String; vplrn1: String; vpparty1: String;
+ 
+  test(){
+    // const pres:Nominee[] = [ 
+    //   {name: this.pname1, lrn: this.plrn1, party:this.pparty1 },
+    // ] ;
 
-  fetchNominee(){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': this.authService.authToken
-      })
-    };
-    return this.http.get('url',httpOptions).pipe();
+    const pres = {
+      name : this.pname1,
+      lrn: this.plrn1,
+      party: this.pparty1
+    }
 
-  }
+    this.nominate.test(pres);
+  } 
 
-  updateNominee(data:Candidates){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': this.authService.authToken
-      })
-    };
-    return this.http.post('url',data,httpOptions).pipe();
-
-  }
+  
 } 

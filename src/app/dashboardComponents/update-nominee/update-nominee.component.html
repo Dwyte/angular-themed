@@ -1,0 +1,14 @@
+<table >
+  <tr>
+    <th *ngFor="let column of displayedColumns">{{column}}</th>
+    
+  </tr>
+  <tr *ngFor="let candidate of candidateData">
+    <td>{{candidate.position}}</td>
+    <td>{{candidate.name}}</td>
+    <td>{{candidate.lrn}}</td>
+    <td>{{candidate.party}}</td>
+  </tr>
+
+</table>
+
