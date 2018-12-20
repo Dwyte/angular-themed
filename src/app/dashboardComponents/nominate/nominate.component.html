@@ -1,180 +1,64 @@
-<mat-grid-list cols="3" rowheight="2:1" gutterSize="5px">
+<mat-grid-list cols="1">
 
     <mat-grid-tile >
         <mat-card >
         	<mat-card-title>President</mat-card-title>
-        	<form (submit)="test()">
+        	<form #nominateForm="ngForm" (submit)="onNominateMethod(nominateForm)">
         		<div style="display: inline-block;">
+        			<!-- lrn -->
         			<mat-form-field style="width:100%;">
-		        		<input  matInput [(ngModel)]="pname1" name="pname1" placeholder="name1">
+		        		<input  matInput [(ngModel)]="lrn" name="lrn" placeholder="Learners Referrence Number(LRN)">
 		        	</mat-form-field>
 		        	&nbsp;
-		        	<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="plrn1" name="plrn1" placeholder="LRN1">
+		        	<!-- fullname -->
+        			<mat-form-field style="width:100%;">
+		        		<input  matInput [(ngModel)]="fullName" name="fullname" placeholder="Full Name">
 		        	</mat-form-field>
-			    	&nbsp;
-			    	<mat-form-field style="width:100%;">
-					  <mat-select matInput [(ngModel)]="pparty1" name="pparty1" placeholder="Select Partylist">
+		        	&nbsp;
+		        	<!-- partylist -->
+		        	<mat-form-field style="width:100%;">
+					  <mat-select matInput [(ngModel)]="party" name="party" placeholder="Select Partylist">
 					    <mat-option value="democratic">Democratic</mat-option>
 					    <mat-option value="progressive">Progressive</mat-option>
 					  </mat-select>
 					</mat-form-field>
-					<br><br>
-        		</div>    
-	            <button style="display: block; width: 100%; background-color: green; color:white;"type="submit" mat-flat-button  >Submit</button>
-        	</form>
-        </mat-card>
-    </mat-grid-tile>
+					&nbsp;
+					<!-- gradelevel -->
+					<mat-form-field style="width:100%;">
+					  <mat-select matInput [(ngModel)]="gradeLevel" name="gradeLevel" placeholder="Select Grade Level">
+					    <mat-option value="7">7</mat-option>
+					    <mat-option value="8">8</mat-option>
+					    <mat-option value="9">9</mat-option>
+					    <mat-option value="10">10</mat-option>
+					    <mat-option value="11">11</mat-option>
+					    <mat-option value="12">12</mat-option>
+					  </mat-select>
+					</mat-form-field>
+					&nbsp;
+					<!-- section -->
+        			<mat-form-field style="width:100%;">
+		        		<input  matInput [(ngModel)]="section" name="section" placeholder="Section">
+		        	</mat-form-field>
+		        	&nbsp;
+		        	<!-- position -->
+					<mat-form-field style="width:100%;">
+					  <mat-select matInput [(ngModel)]="position" name="position" placeholder="Select Position Running For">
+					     <mat-option value="President">{{ 'president' | titlecase }}</mat-option>
+						    <mat-option value="Vice President">{{'vice president' | titlecase }}</mat-option>
+						    <mat-option value="Secretary">{{ 'secretary' | titlecase }}</mat-option>
+						    <mat-option value="Auditor">{{ 'auditor '| titlecase }}</mat-option>
+						    <mat-option value="PIO">{{'public information officer' | titlecase }}</mat-option>
+						  	<mat-option value="G7 representative">{{'g7 representative' | titlecase }}</mat-option>
+						  	<mat-option value="G8 representative">{{'g8 representative' | titlecase }}</mat-option>
+						  	<mat-option value="G9 representative">{{'g9 representative' | titlecase }}</mat-option>
+						  	<mat-option value="G10 representative">{{'g10 representative' | titlecase }}</mat-option>
+						  	<mat-option value="G11 representative">{{'g11 representative' | titlecase }}</mat-option>
+						  	<mat-option value="G12 representative">{{'g12 representative' | titlecase }}</mat-option>
+					  </mat-select>
+					</mat-form-field>
 
-    <mat-grid-tile >
-        <mat-card >
-        	<mat-card-title>Vice President</mat-card-title>
-        	<form (submit)="test()">
-        		<div style="display: inline-block;">
-        			<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="vpname1" name="vpname1" placeholder="name1">
-		        	</mat-form-field>
-		        	&nbsp;
-		        	<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="vplrn1" name="vplrn1" placeholder="LRN1">
-		        	</mat-form-field>
-			    	&nbsp;
-			    	<mat-form-field style="width:100%;">
-					  <mat-select [(ngModel)]="vpparty1" name="vpparty1" placeholder="Select Partylist">
-					    <mat-option value="democratic">Democratic</mat-option>
-					    <mat-option value="progressive">Progressive</mat-option>
-					  </mat-select>
-					</mat-form-field>
-					<br><br>
-        		</div>
-	            <button style="display: block; width: 100%; background-color: green; color:white;"type="submit" mat-flat-button  >Submit</button>
-        	</form>
-        </mat-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile >
-        <mat-card >
-        	<mat-card-title>Secretary</mat-card-title>
-        	<form (submit)="test()">
-        		<div style="display: inline-block;">
-        			<mat-form-field style="width:100%;">
-		        		<input  matInput [(ngModel)]="pname1" name="pname1" placeholder="name1">
-		        	</mat-form-field>
-		        	&nbsp;
-		        	<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="plrn1" name="plrn1" placeholder="LRN1">
-		        	</mat-form-field>
-			    	&nbsp;
-			    	<mat-form-field style="width:100%;">
-					  <mat-select matInput [(ngModel)]="pparty1" name="pparty1" placeholder="Select Partylist">
-					    <mat-option value="democratic">Democratic</mat-option>
-					    <mat-option value="progressive">Progressive</mat-option>
-					  </mat-select>
-					</mat-form-field>
-					<br><br>
-        		</div>    
-	            <button style="display: block; width: 100%; background-color: green; color:white;"type="submit" mat-flat-button  >Submit</button>
-        	</form>
-        </mat-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile >
-        <mat-card >
-        	<mat-card-title>Treasurer</mat-card-title>
-        	<form (submit)="test()">
-        		<div style="display: inline-block;">
-        			<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="vpname1" name="vpname1" placeholder="name1">
-		        	</mat-form-field>
-		        	&nbsp;
-		        	<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="vplrn1" name="vplrn1" placeholder="LRN1">
-		        	</mat-form-field>
-			    	&nbsp;
-			    	<mat-form-field style="width:100%;">
-					  <mat-select [(ngModel)]="vpparty1" name="vpparty1" placeholder="Select Partylist">
-					    <mat-option value="democratic">Democratic</mat-option>
-					    <mat-option value="progressive">Progressive</mat-option>
-					  </mat-select>
-					</mat-form-field>
-					<br><br>
-        		</div>
-	            <button style="display: block; width: 100%; background-color: green; color:white;"type="submit" mat-flat-button  >Submit</button>
-        	</form>
-        </mat-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile >
-        <mat-card >
-        	<mat-card-title>Auditor</mat-card-title>
-        	<form (submit)="test()">
-        		<div style="display: inline-block;">
-        			<mat-form-field style="width:100%;">
-		        		<input  matInput [(ngModel)]="pname1" name="pname1" placeholder="name1">
-		        	</mat-form-field>
-		        	&nbsp;
-		        	<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="plrn1" name="plrn1" placeholder="LRN1">
-		        	</mat-form-field>
-			    	&nbsp;
-			    	<mat-form-field style="width:100%;">
-					  <mat-select matInput [(ngModel)]="pparty1" name="pparty1" placeholder="Select Partylist">
-					    <mat-option value="democratic">Democratic</mat-option>
-					    <mat-option value="progressive">Progressive</mat-option>
-					  </mat-select>
-					</mat-form-field>
-					<br><br>
-        		</div>    
-	            <button style="display: block; width: 100%; background-color: green; color:white;"type="submit" mat-flat-button  >Submit</button>
-        	</form>
-        </mat-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile >
-        <mat-card >
-        	<mat-card-title>Public Information Officer</mat-card-title>
-        	<form (submit)="test()">
-        		<div style="display: inline-block;">
-        			<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="vpname1" name="vpname1" placeholder="name1">
-		        	</mat-form-field>
-		        	&nbsp;
-		        	<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="vplrn1" name="vplrn1" placeholder="LRN1">
-		        	</mat-form-field>
-			    	&nbsp;
-			    	<mat-form-field style="width:100%;">
-					  <mat-select [(ngModel)]="vpparty1" name="vpparty1" placeholder="Select Partylist">
-					    <mat-option value="democratic">Democratic</mat-option>
-					    <mat-option value="progressive">Progressive</mat-option>
-					  </mat-select>
-					</mat-form-field>
-					<br><br>
-        		</div>
-	            <button style="display: block; width: 100%; background-color: green; color:white;"type="submit" mat-flat-button  >Submit</button>
-        	</form>
-        </mat-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile >
-        <mat-card >
-        	<mat-card-title>Peace Officer</mat-card-title>
-        	<form (submit)="test()">
-        		<div style="display: inline-block;">
-        			<mat-form-field style="width:100%;">
-		        		<input  matInput [(ngModel)]="pname1" name="pname1" placeholder="name1">
-		        	</mat-form-field>
-		        	&nbsp;
-		        	<mat-form-field style="width:100%;">
-		        		<input matInput [(ngModel)]="plrn1" name="plrn1" placeholder="LRN1">
-		        	</mat-form-field>
-			    	&nbsp;
-			    	<mat-form-field style="width:100%;">
-					  <mat-select matInput [(ngModel)]="pparty1" name="pparty1" placeholder="Select Partylist">
-					    <mat-option value="democratic">Democratic</mat-option>
-					    <mat-option value="progressive">Progressive</mat-option>
-					  </mat-select>
-					</mat-form-field>
+		        
+			    	
 					<br><br>
         		</div>    
 	            <button style="display: block; width: 100%; background-color: green; color:white;"type="submit" mat-flat-button  >Submit</button>

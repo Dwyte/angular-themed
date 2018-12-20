@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 import {NominateService} from '../../nominate.service';
 import {Nominee} from './nominee';
 
@@ -10,27 +11,33 @@ import {Nominee} from './nominee';
 })
 export class NominateComponent implements OnInit {
 
+  lrn:number;
+  fullName:String;
+  party: String;
+  gradeLevel:number;
+  section:String;
+  position:String;
+
+
   constructor(private nominate: NominateService) { }
 
   ngOnInit() {
   }
-
-  pname1: String; plrn1: String; pparty1: String;
-  vpname1: String; vplrn1: String; vpparty1: String;
  
-  test(){
-    // const pres:Nominee[] = [ 
-    //   {name: this.pname1, lrn: this.plrn1, party:this.pparty1 },
-    // ] ;
-
-    const pres = {
-      name : this.pname1,
-      lrn: this.plrn1,
-      party: this.pparty1
+  onNominateMethod(nominateForm: NgForm) {
+    const candidate = {
+      lrn: this.lrn,
+      fullName: this.fullName,
+      party: this.party,
+      gradeLevel: this.gradeLevel,
+      section: this.section,
+      position: this.position
     }
+    this.nominate.addNominee(candidate).subscribe( data => console.log(data));
 
-    this.nominate.test(pres);
+    nominateForm.resetForm();
+
   } 
 
   
-} 
+}  

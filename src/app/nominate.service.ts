@@ -5,7 +5,6 @@ import {AuthService} from './auth.service';
 
 import {Observable} from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,36 +12,50 @@ export class NominateService {
 
   constructor(private http:HttpClient, private authService: AuthService) { }
 
-   test(obja){
-    console.log(obja);
-  }
-
-  addNominee(data:Nominee ){
+  fetchNominee(): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': this.authService.authToken
+        'Content-type': 'application/json'
       })
-    };
-    return this.http.post('url',data,httpOptions).pipe();
-  }
-
-  fetchNominee(): Observable<Nominee[]>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': this.authService.authToken
-      })
-    };
-    return this.http.get<Nominee[]>('url',httpOptions).pipe();
+    }
+  return this.http.get<any>('http://localhost:3000/api/candidates',httpOptions).pipe();
 
   }
 
-  updateNominee(data:Nominee){
+  addNominee(data:any ){
+    const authToken = this.authService.returnToken();
+    console.log(authToken);
     const httpOptions = {
       headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': authToken
+      })
+    }
+    console.log(httpOptions);
+    return this.http.post<any>('http://localhost:3000/api/candidates/nominateCandidate', data, httpOptions).pipe();
+  }
+
+  
+  updateNominee(data:any, id){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
         'Authorization': this.authService.authToken
       })
-    };
-    return this.http.post('url',data,httpOptions).pipe();
+    }
+    return this.http.put<any>(`http://localhost:3000/api/candidates/updateCandidate/${id}`, data,httpOptions).pipe();
+
+  }
+
+  deleteNominee(id:any): Observable<{}>{
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-type': 'application/json',
+    //     'Authorization': this.authService.authToken
+    //   })
+    // }
+    const url = `http://localhost:3000/api/candidates/removeCandidate/${id}`;
+    return this.http.delete(url).pipe();
 
   }
 }

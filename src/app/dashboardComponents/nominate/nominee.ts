@@ -1,6 +1,12 @@
 export interface Nominee {
-	name:String;
-	lrn: String;
+
+	lrn: number;
+	fullName:String;
 	party: String;
-	// position:String;
+	gradeLevel: number;
+	section: String;
+    position:String;
 }
+
+
+ 
