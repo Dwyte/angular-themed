@@ -1,4 +1,4 @@
-<!-- {{candidateData.presidents | json}} -->
+{{candidateData.presidents | json}}
 
 <table >
   <tr>
@@ -43,15 +43,15 @@
 	    
 	    </td>		
 	    <!-- partylist -->
-	    <!-- <td>
+	    <td>
 	    	<mat-form-field style="width:100%;">
-			  <mat-select matInput [(ngModel)]="party" name="party" [placeholder]="candidate.party">
+			  <mat-select matInput [(ngModel)]="candidate.party" name="party" [placeholder]="candidate.party">
 			    <mat-option value="democratic">Democratic</mat-option>
 			    <mat-option value="progressive">Progressive</mat-option>
 			  </mat-select>
 			</mat-form-field>
 			&nbsp;
-		</td> -->
+		</td>
 		<!-- gradelevel -->
 		<td>
 			<mat-form-field style="width:100%;">
@@ -75,7 +75,7 @@
 	    </td>
 
 	    <td>  
-	        <button (click)="onUpdate(candidate._id, candidate.lrn, candidate.fullName, candidate.gradeLevel, candidate.section, candidate.position)" class="btn-success">Update</button>
+	        <button (click)="onUpdate(candidate._id, candidate.lrn, candidate.fullName, candidate.party, candidate.gradeLevel, candidate.section, candidate.position)" class="btn-success">Update</button>
 	    </td>
 	    <td>
 	      <button (click)="onDelete(candidate._id)" class="btn-info">Remove</button>

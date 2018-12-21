@@ -21,19 +21,20 @@ export class UpdateNomineeComponent implements OnInit {
   constructor(private nominate: NominateService){
 
   } 
-
+ 
   ngOnInit() {
     this.nominate.fetchNominee().subscribe(data => this.candidateData = data);
     console.log(this.candidateData);
   }
 
-  displayedColumns: string[] = ['POSITION', 'LRN', 'CANDIDATE NAME', "GRADE LEVEL", "SECTION", "UPDATE", "REMOVE" ];
+  displayedColumns: string[] = ['POSITION', 'LRN', 'CANDIDATE NAME','PARTYLIST', "GRADE LEVEL", "SECTION", "UPDATE", "REMOVE" ];
 
 
-  onUpdate(id, lrn, fullName, gradeLevel, section, position){
+  onUpdate(id, lrn, fullName, party, gradeLevel, section, position){
     const candidate = {
       lrn: lrn,
       fullName: fullName,
+      party: party,
       gradeLevel: gradeLevel,
       section: section,
       position: position
@@ -44,7 +45,7 @@ export class UpdateNomineeComponent implements OnInit {
 
   onDelete(id){
     
-   this.nominate.deleteNominee(id).subscribe(data => {});
+   this.nominate.deleteNominee(id).subscribe(data => console.log(data));
 
   }
 
