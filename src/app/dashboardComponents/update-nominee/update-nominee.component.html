@@ -1,4 +1,4 @@
-{{candidateData.presidents | json}}
+<!-- {{candidateData.presidents | json}} -->
 
 <table >
   <tr>
@@ -6,7 +6,7 @@
      
   </tr>
 
-    <tr *ngFor="let candidate of candidateData.presidents">
+    <tr *ngFor="let candidate of candidateData.presidents ">
     
 	    <!-- position -->
 	    <td>
@@ -45,7 +45,7 @@
 	    <!-- partylist -->
 	    <td>
 	    	<mat-form-field style="width:100%;">
-			  <mat-select matInput [(ngModel)]="candidate.party" name="party" [placeholder]="candidate.party">
+			  <mat-select matInput [(ngModel)]="candidate.party" name="party" >
 			    <mat-option value="democratic">Democratic</mat-option>
 			    <mat-option value="progressive">Progressive</mat-option>
 			  </mat-select>

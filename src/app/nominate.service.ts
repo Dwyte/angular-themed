@@ -12,7 +12,7 @@ export class NominateService {
 
   constructor(private http:HttpClient, private authService: AuthService) { }
 
-  fetchNominee(): Observable<any>{
+  fetchNominee(){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {NominateService} from '../../nominate.service';
+import {interval} from 'rxjs';
 
 export interface INominee {
   position: string;	
@@ -17,18 +18,25 @@ export interface INominee {
 export class UpdateNomineeComponent implements OnInit {
   
   candidateData: any;
+  interval;
 
   constructor(private nominate: NominateService){
 
   } 
- 
+  
   ngOnInit() {
-    this.nominate.fetchNominee().subscribe(data => this.candidateData = data);
-    console.log(this.candidateData);
+    this.onFetch();
+    this.interval = setInterval( () => {
+        this.onFetch();
+      }, 1000);
   }
 
   displayedColumns: string[] = ['POSITION', 'LRN', 'CANDIDATE NAME','PARTYLIST', "GRADE LEVEL", "SECTION", "UPDATE", "REMOVE" ];
 
+  onFetch(){
+    this.nominate.fetchNominee().subscribe(data => this.candidateData = data);
+
+  }
 
   onUpdate(id, lrn, fullName, party, gradeLevel, section, position){
     const candidate = {
