@@ -38,7 +38,6 @@ export class AuthService {
   storeToken(token){
     localStorage.setItem('id_token', token);
     this.authToken = token;
-   
   }
 
   returnToken(){
@@ -58,6 +57,17 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+  }
+
+  changePass(data){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('id_token')
+      })
+    };
+
+    return this.http.put<any>('http://localhost:3000/api/admin/changePass', data, httpOptions).pipe();
   }
 
 }

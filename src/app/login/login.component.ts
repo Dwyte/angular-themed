@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
     }
 
     this.auth.authenticate(credentials).subscribe(data => 
-    	{
-    		this.auth.storeToken(data.authToken);
-    		console.log(this.auth.authToken);
-    	});
+    {
+      this.auth.storeToken(data.authToken);
+      console.log(this.auth.authToken);
+    });
   	
   }
 

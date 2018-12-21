@@ -47,6 +47,7 @@ import {AuthService} from './auth.service';
 import {NominateService} from './nominate.service';
 import {HomeService} from './home.service';
 import { UpdateNomineeComponent } from './dashboardComponents/update-nominee/update-nominee.component';
+import { ChangePassComponent } from './dashboardComponents/change-pass/change-pass.component';
 
 const appRoute: Routes = [
   {path:'navbar', component:NavbarComponent},
@@ -55,13 +56,14 @@ const appRoute: Routes = [
   {path:'login', component:LoginComponent},
   {path: 'dashboard', 
    component:DashboardComponent, children: [    
-      { path: '', component: PresViceSecComponent},
-      { path: 'tallyboard', component:TallyboardComponent},
+      {path: '', component: PresViceSecComponent},
+      {path: 'tallyboard', component:TallyboardComponent},
       {path: 'upload', component: UploadDatabaseComponent},
       {path: 'activate', component: ActivateComponent},
       {path:'editpoll', component: EditpollComponent},
       {path:'nominate', component: NominateComponent},
-      {path:'update-nominee', component: UpdateNomineeComponent}
+      {path:'update-nominee', component: UpdateNomineeComponent},
+      {path: 'change-pass', component: ChangePassComponent}
     ]
   },
   {path:'ballot', component:BallotComponent},
@@ -86,7 +88,8 @@ const appRoute: Routes = [
     BallotComponent,
     NominateComponent,
     EditpollComponent,
-    UpdateNomineeComponent
+    UpdateNomineeComponent,
+    ChangePassComponent
 
   ],
   imports: [
