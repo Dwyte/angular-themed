@@ -9,6 +9,6 @@ export class TallyService {
   constructor(private http: HttpClient) { }
 
   tallyResult(position){
-    return this.http.get("http://localhost:3000/api/candidates/tally/" + position);
+    return this.http.get<any[]>("http://localhost:3000/api/candidates/tally/" + position);
   }
 }

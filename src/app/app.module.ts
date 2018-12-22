@@ -32,7 +32,6 @@ import { DashboardHomeComponent } from './dashboardComponents/dashboard-home/das
 import { LeaderboardGraphComponent } from './dashboardComponents/leaderboard-graph/leaderboard-graph.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Leaderboard2Graph2Component } from './dashboardComponents/leaderboard2-graph2/leaderboard2-graph2.component';
-import { RepresentativesComponent } from './dashboardComponents/representatives/representatives.component';
 import { TallyboardComponent } from './dashboardComponents/tallyboard/tallyboard.component';
 import { UploadDatabaseComponent } from './dashboardComponents/upload-database/upload-database.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
@@ -82,7 +81,6 @@ const appRoute: Routes = [
     DashboardHomeComponent,
     LeaderboardGraphComponent,
     Leaderboard2Graph2Component,
-    RepresentativesComponent,
     TallyboardComponent,
     UploadDatabaseComponent,
     ActivateComponent,
