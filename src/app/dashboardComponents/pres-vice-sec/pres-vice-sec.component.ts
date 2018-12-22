@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TallyService } from '../../tally.service';
 
 export interface format {
     position: String;
@@ -28,14 +29,28 @@ export interface format {
 })
 export class PresViceSecComponent implements OnInit {
 
-  constructor() { }
+  tallyPositions: string[] = ['President', 'Vice President', 'Secretary'];
+  displayedColumns: string[] = ['party', 'name', 'votes'];
+  talliedResults: any[] = [];
+
+  constructor(private tallyService: TallyService) {}
 
   ngOnInit() {
+    this.tallyPositions.forEach(element => {
+      this.tallyService.tallyResult(element).subscribe(res => {
+        this.talliedResults.push(res);
+      });
+    });
+
+    console.log(this.talliedResults);
   }
 
-  displayedColumns: string[] = ['position', 'name', 'votes'];
-  presDataSource = presBoard; 
+  
+  
+  presDataSource = presBoard;
+
   viceDataSource = viceBoard;
+  
   secretaryDataSource = secretaryBoard;
 }
   
