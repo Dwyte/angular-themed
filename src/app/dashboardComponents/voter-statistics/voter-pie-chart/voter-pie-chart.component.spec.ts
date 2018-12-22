@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeaderboardGraphComponent } from './leaderboard-graph.component';
+import { VoterPieChartComponent } from './voter-pie-chart.component';
 
-describe('LeaderboardGraphComponent', () => {
-  let component: LeaderboardGraphComponent;
-  let fixture: ComponentFixture<LeaderboardGraphComponent>;
+describe('VoterPieChartComponent', () => {
+  let component: VoterPieChartComponent;
+  let fixture: ComponentFixture<VoterPieChartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeaderboardGraphComponent ]
+      declarations: [ VoterPieChartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeaderboardGraphComponent);
+    fixture = TestBed.createComponent(VoterPieChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -15,19 +15,30 @@ export class TallyRowComponent implements OnInit {
   
   maxTallyLength: number = 0;
   heightRatio: string = "100:20";
+
+  dataFetched: boolean = false;
  
   constructor(private tallyService: TallyService) {}
 
   ngOnInit() {
-    this.tallyPositions.forEach(element => {
-      this.tallyService.tallyResult(element).subscribe(res => {
-        this.talliedResults.push(res);
+    this.fetchTally()
+      .then(() => this.dataFetched = true)
+      .catch((error) => console.log(error));
+  }
 
-        if(res.length > this.maxTallyLength){
-          this.maxTallyLength = res.length;
-          this.heightRatio = "100:" + String(20 + (15 * this.maxTallyLength));
-        }
+  fetchTally(){
+    return new Promise((resolve, reject) => {
+      this.tallyPositions.forEach(element => {
+        this.tallyService.fetchTally(element).subscribe(res => {
+          this.talliedResults.push(res);
+  
+          if(res.length > this.maxTallyLength){
+            this.maxTallyLength = res.length;
+            this.heightRatio = "100:" + String(20 + (15 * this.maxTallyLength));
+          }
+        }, (error) => reject(error));
       });
-    });
+      resolve();
+    })
   }
 }

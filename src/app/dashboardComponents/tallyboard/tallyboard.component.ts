@@ -12,6 +12,6 @@ export class TallyboardComponent implements OnInit {
   ngOnInit() {
   }
 
-   displayedColumns: string[] = ['position','name', 'votes'];
-
+  tallyPositions = ['President', 'Vice President', 'Secretary', 'Auditor', 'Treasurer', '']
+  displayedColumns: string[] = ['position','name', 'votes'];
 }

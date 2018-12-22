@@ -29,7 +29,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent} from './dashboard/dashboard.component';
 import { DashboardHomeComponent } from './dashboardComponents/dashboard-home/dashboard-home.component';
-import { LeaderboardGraphComponent } from './dashboardComponents/leaderboard-graph/leaderboard-graph.component';
+import { VoterChartsComponent } from './dashboardComponents/voter-statistics/voter-charts.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Leaderboard2Graph2Component } from './dashboardComponents/leaderboard2-graph2/leaderboard2-graph2.component';
 import { TallyboardComponent } from './dashboardComponents/tallyboard/tallyboard.component';
@@ -48,6 +48,7 @@ import {HomeService} from './home.service';
 import { UpdateNomineeComponent } from './dashboardComponents/update-nominee/update-nominee.component';
 import { ChangePassComponent } from './dashboardComponents/change-pass/change-pass.component';
 import { TallyRowComponent } from './dashboardComponents/tallyboard/tally-row/tally-row.component';
+import { VoterPieChartComponent } from './dashboardComponents/voter-statistics/voter-pie-chart/voter-pie-chart.component';
 
 const appRoute: Routes = [
   {path:'navbar', component:NavbarComponent},
@@ -79,7 +80,7 @@ const appRoute: Routes = [
     HomeComponent,
     DashboardComponent,
     DashboardHomeComponent,
-    LeaderboardGraphComponent,
+    VoterChartsComponent,
     Leaderboard2Graph2Component,
     TallyboardComponent,
     UploadDatabaseComponent,
@@ -89,7 +90,8 @@ const appRoute: Routes = [
     EditpollComponent,
     UpdateNomineeComponent,
     ChangePassComponent,
-    TallyRowComponent
+    TallyRowComponent,
+    VoterPieChartComponent
 
   ],
   imports: [
