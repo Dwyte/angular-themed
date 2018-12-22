@@ -28,7 +28,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent} from './dashboard/dashboard.component';
-import { PresViceSecComponent } from './dashboardComponents/pres-vice-sec/pres-vice-sec.component';
+import { DashboardHomeComponent } from './dashboardComponents/dashboard-home/dashboard-home.component';
 import { LeaderboardGraphComponent } from './dashboardComponents/leaderboard-graph/leaderboard-graph.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Leaderboard2Graph2Component } from './dashboardComponents/leaderboard2-graph2/leaderboard2-graph2.component';
@@ -48,6 +48,7 @@ import {NominateService} from './nominate.service';
 import {HomeService} from './home.service';
 import { UpdateNomineeComponent } from './dashboardComponents/update-nominee/update-nominee.component';
 import { ChangePassComponent } from './dashboardComponents/change-pass/change-pass.component';
+import { TallyRowComponent } from './dashboardComponents/tallyboard/tally-row/tally-row.component';
 
 const appRoute: Routes = [
   {path:'navbar', component:NavbarComponent},
@@ -56,7 +57,7 @@ const appRoute: Routes = [
   {path:'login', component:LoginComponent},
   {path: 'dashboard', 
    component:DashboardComponent, children: [    
-      {path: '', component: PresViceSecComponent},
+      {path: '', component: DashboardHomeComponent},
       {path: 'tallyboard', component:TallyboardComponent},
       {path: 'upload', component: UploadDatabaseComponent},
       {path: 'activate', component: ActivateComponent},
@@ -78,7 +79,7 @@ const appRoute: Routes = [
     LoginComponent,
     HomeComponent,
     DashboardComponent,
-    PresViceSecComponent,
+    DashboardHomeComponent,
     LeaderboardGraphComponent,
     Leaderboard2Graph2Component,
     RepresentativesComponent,
@@ -89,7 +90,8 @@ const appRoute: Routes = [
     NominateComponent,
     EditpollComponent,
     UpdateNomineeComponent,
-    ChangePassComponent
+    ChangePassComponent,
+    TallyRowComponent
 
   ],
   imports: [

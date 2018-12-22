@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PresViceSecComponent } from './pres-vice-sec.component';
+import { TallyRowComponent } from './tally-row.component';
 
-describe('PresViceSecComponent', () => {
-  let component: PresViceSecComponent;
-  let fixture: ComponentFixture<PresViceSecComponent>;
+describe('TallyRowComponent', () => {
+  let component: TallyRowComponent;
+  let fixture: ComponentFixture<TallyRowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PresViceSecComponent ]
+      declarations: [ TallyRowComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PresViceSecComponent);
+    fixture = TestBed.createComponent(TallyRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
