@@ -1,103 +1,11 @@
-<div class="row" >
-  <div class="column">
-    <p>
-            <mat-icon color="accent">data_usage</mat-icon>
-   President
-    </p>
-  </div>
-  <div class="column">
-    <p>
-            <mat-icon color="accent">data_usage</mat-icon>
-   Vice President
-    </p>
-  </div>
-  <div class="column">
-    <p>
-            <mat-icon color="accent">data_usage</mat-icon>
-    Secretary
-    </p>
-  </div>
-</div>
+<app-tally-row 
+    [tallyPos]="['President', 'Vice President', 'Secretary']"
+    [columns]="['party', 'name', 'votes']">
+</app-tally-row>
 
-<mat-grid-list cols="3" rowHeight="2:1" gutterSize="10px">
-    <!-- PRESIDENT -->
-        <mat-grid-tile>
-            
-            <!-- table results using mat-table -->
-            <table mat-table [dataSource]="presDataSource" class="mat-elevation-z8" style="width: 100%; height: 100%;">
-                <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> Position </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="votes">
-                    <th mat-header-cell *matHeaderCellDef> Votes </th>
-                    <td mat-cell *matCellDef="let element"> {{element.votes}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-        </mat-grid-tile>
-
-    <!-- VICE PRESIDENT -->
-        <mat-grid-tile>
-           
-            <!-- table results using mat-table -->
-            <table mat-table [dataSource]="viceDataSource" class="mat-elevation-z8" style="width: 100%; height: 100%;">
-                <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> Position </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container>
-                
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="votes">
-                    <th mat-header-cell *matHeaderCellDef> Votes </th>
-                    <td mat-cell *matCellDef="let element"> {{element.votes}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>            
-        </mat-grid-tile>
-    <!-- SECRETARY -->
-        <mat-grid-tile>
-
-            <!-- table results using mat-table -->
-            <table mat-table [dataSource]="secretaryDataSource" class="mat-elevation-z8" style="width: 100%; height: 100%;">
-                <ng-container matColumnDef="position">
-                    <th mat-header-cell *matHeaderCellDef> Position </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="votes">
-                    <th mat-header-cell *matHeaderCellDef> Votes </th>
-                    <td mat-cell *matCellDef="let element"> {{element.votes}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-        </mat-grid-tile>    
-        
-</mat-grid-list>
-
-
-<br>
-
+<app-tally-row 
+    [tallyPos]="['Auditor', 'Treasurer', 'PIO']"
+    [columns]="['party', 'name', 'votes']">
+</app-tally-row>
 <!-- REPRESENTATIVES -->
 <app-representatives></app-representatives>

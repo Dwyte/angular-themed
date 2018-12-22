@@ -9,14 +9,14 @@ import { TallyService } from '../../../tally.service';
 
 export class TallyRowComponent implements OnInit {
 
-  @Input("tallyPos") positionsToTally: string[];
+  @Input("tallyPos") tallyPositions: string[];
   @Input("columns") displayedColumns: string[];
   talliedResults: any[] = [];
 
   constructor(private tallyService: TallyService) {}
 
   ngOnInit() {
-    this.positionsToTally.forEach(element => {
+    this.tallyPositions.forEach(element => {
       this.tallyService.tallyResult(element).subscribe(res => {
         this.talliedResults.push(res);
       });
