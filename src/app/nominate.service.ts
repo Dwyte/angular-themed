@@ -12,7 +12,7 @@ export class NominateService {
 
   constructor(private http:HttpClient, private authService: AuthService) { }
 
-  fetchNominee(): Observable<any>{
+  fetchNominee(){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
@@ -24,7 +24,6 @@ export class NominateService {
 
   addNominee(data:any ){
     const authToken = this.authService.returnToken();
-    console.log(authToken);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
@@ -37,25 +36,27 @@ export class NominateService {
 
   
   updateNominee(data:any, id){
+    const authToken = this.authService.returnToken();
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
-        'Authorization': this.authService.authToken
+        'Authorization': authToken
       })
     }
     return this.http.put<any>(`http://localhost:3000/api/candidates/updateCandidate/${id}`, data,httpOptions).pipe();
 
   }
 
-  deleteNominee(id:any): Observable<{}>{
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-type': 'application/json',
-    //     'Authorization': this.authService.authToken
-    //   })
-    // }
+  deleteNominee(id:any): Observable<any>{
+    const authToken = this.authService.returnToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': authToken
+      })
+    }
     const url = `http://localhost:3000/api/candidates/removeCandidate/${id}`;
-    return this.http.delete(url).pipe();
+    return this.http.delete<any>(url,httpOptions).pipe();
 
   }
 }

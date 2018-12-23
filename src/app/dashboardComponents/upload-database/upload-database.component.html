@@ -8,8 +8,9 @@
     </mat-card-header>
     <br>
 
-    <angular-file-uploader
-      [config]="afuConfig">
-	</angular-file-uploader>
+    <form (ngSubmit)="upload(uploadForm)"  #uploadForm="ngForm">
+	  <input class="btn-black" type="file" id="file" multiple (change)="files($event.target.files)" >
+	  <button class="btn-success" type="submit" >Upload</button>
+	</form>
 
 </mat-card>  

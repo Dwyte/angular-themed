@@ -31,10 +31,9 @@ import { DashboardComponent} from './dashboard/dashboard.component';
 import { DashboardHomeComponent } from './dashboardComponents/dashboard-home/dashboard-home.component';
 import { VoterChartsComponent } from './dashboardComponents/voter-statistics/voter-charts.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { Leaderboard2Graph2Component } from './dashboardComponents/leaderboard2-graph2/leaderboard2-graph2.component';
+import { RepresentativesComponent } from './dashboardComponents/representatives/representatives.component';
 import { TallyboardComponent } from './dashboardComponents/tallyboard/tallyboard.component';
 import { UploadDatabaseComponent } from './dashboardComponents/upload-database/upload-database.component';
-import { AngularFileUploaderModule } from "angular-file-uploader";
 import { ActivateComponent } from './dashboardComponents/activate/activate.component';
 import { BallotComponent } from './ballot/ballot.component';
 import { NominateComponent } from './dashboardComponents/nominate/nominate.component';
@@ -49,10 +48,13 @@ import { UpdateNomineeComponent } from './dashboardComponents/update-nominee/upd
 import { ChangePassComponent } from './dashboardComponents/change-pass/change-pass.component';
 import { TallyRowComponent } from './dashboardComponents/tallyboard/tally-row/tally-row.component';
 import { VoterPieChartComponent } from './dashboardComponents/voter-statistics/voter-pie-chart/voter-pie-chart.component';
+import { ElectionComponent } from './dashboardComponents/election/election.component';
+import {ElectionService} from './election.service';
+
 
 const appRoute: Routes = [
-  {path:'navbar', component:NavbarComponent},
   {path:'', component:HomeComponent},
+  {path:'navbar', component:NavbarComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
   {path: 'dashboard', 
@@ -64,7 +66,8 @@ const appRoute: Routes = [
       {path:'editpoll', component: EditpollComponent},
       {path:'nominate', component: NominateComponent},
       {path:'update-nominee', component: UpdateNomineeComponent},
-      {path: 'change-pass', component: ChangePassComponent}
+      {path: 'change-pass', component: ChangePassComponent},
+      {path:'election', component: ElectionComponent}
     ]
   },
   {path:'ballot', component:BallotComponent},
@@ -74,7 +77,7 @@ const appRoute: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-   NavbarComponent,
+    NavbarComponent,
     RegisterComponent,
     LoginComponent,
     HomeComponent,
@@ -82,6 +85,8 @@ const appRoute: Routes = [
     DashboardHomeComponent,
     VoterChartsComponent,
     Leaderboard2Graph2Component,
+    LeaderboardGraphComponent,
+    RepresentativesComponent,
     TallyboardComponent,
     UploadDatabaseComponent,
     ActivateComponent,
@@ -92,6 +97,8 @@ const appRoute: Routes = [
     ChangePassComponent,
     TallyRowComponent,
     VoterPieChartComponent
+    ElectionComponent
+
 
   ],
   imports: [
@@ -114,16 +121,15 @@ const appRoute: Routes = [
     MatPaginatorModule,
     MatTableModule,
     NgxChartsModule,
-     MatRadioModule,
-    AngularFileUploaderModule,
-     HttpClientModule,
-     MatSelectModule,
-     MatDatepickerModule,
-     MatNativeDateModule
+    MatRadioModule,
+    HttpClientModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
      // JwtModule
    
   ],
-  providers: [BallotfetchService,AuthService,NominateService, HomeService], 
+  providers: [BallotfetchService,AuthService,NominateService, HomeService, ElectionService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

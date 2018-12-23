@@ -1,0 +1,34 @@
+
+
+{{data.success}}
+<mat-card>
+	<div *ngIf="hasElection; else hasElectionTemplate">
+		<h2>No Election has been made yet !</h2>
+		<br>
+		<p>Want to get started ?</p>
+		<form>
+			<button type="submit" class="btn-success">CREATE ELECTION DATABASE</button>
+		</form>
+	</div>
+
+	<ng-template #hasElectionTemplate>
+		<div style="display:inline-block; margin-left: 15%;">
+			<br>
+			<br>
+			<p>Tap to start </p>
+			<br>
+			<form>
+				<button type="submit" class="btn-success" [disabled]="!electionStarted">START ELECTION </button>
+			</form>
+		</div>
+		<div style="display:inline-block; float: right; margin-right: 17%; ">	 <br>
+			<br>
+			<p>Tap to start </p>
+			<br>
+			<form>
+				<button type="submit" class="btn-info" [disabled]="electionStarted">END ELECTION</button>
+			</form>
+		</div>
+		<br><br>
+	</ng-template>
+</mat-card>
