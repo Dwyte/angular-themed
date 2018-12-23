@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {HomeService} from '../home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,29 +8,28 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-	name:String;
-	lrn:String;
-	grade:String;
-	date:String;
-	 //date = new FormControl(new Date());
-  	// serializedDate = new FormControl((new Date()).toISOString());
-  	section:String;
+	fullName:String;
+	lrn:any;
+	gradeLevel:any;
+  section:String;
 
-  constructor() { }
+  constructor(private service: HomeService) { }
 
   ngOnInit() {
   	
   }
 
   onSubmit(){
-  	const user = {
-  		name: this.name,
-		lrn: this.lrn,
-		grade: this. grade,
-		date: this.date,
-		section: this.section
+    const trimmedSection = this.section.replace(/ /g,'').toLowerCase();
+  
+    const user = {
+  		fullName: this.fullName,
+		  lrn: this.lrn,
+		  gradeLevel: this. gradeLevel,
+		  section: trimmedSection
   	}
 
-  	console.log (user);
+    console.log(user);
+    this.service.userChecker(user).subscribe( data => console.log(data));  
   }
 }

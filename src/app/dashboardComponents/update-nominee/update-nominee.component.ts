@@ -26,16 +26,12 @@ export class UpdateNomineeComponent implements OnInit {
   
   ngOnInit() {
     this.onFetch();
-    this.interval = setInterval( () => {
-        this.onFetch();
-      }, 1000);
   }
 
   displayedColumns: string[] = ['POSITION', 'LRN', 'CANDIDATE NAME','PARTYLIST', "GRADE LEVEL", "SECTION", "UPDATE", "REMOVE" ];
 
   onFetch(){
     this.nominate.fetchNominee().subscribe(data => this.candidateData = data);
-
   }
 
   onUpdate(id, lrn, fullName, party, gradeLevel, section, position){
@@ -49,12 +45,12 @@ export class UpdateNomineeComponent implements OnInit {
     }
    
     this.nominate.updateNominee(candidate, id).subscribe(data => console.log(data));
+    this.onFetch();
   }
 
   onDelete(id){
-    
    this.nominate.deleteNominee(id).subscribe(data => console.log(data));
-
+   this.onFetch();
   }
 
 }
